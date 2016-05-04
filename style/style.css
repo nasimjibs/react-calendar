@@ -9,11 +9,11 @@
 body {
   font-family: sans-serif;
   font-size: 16px;
-  color: #444;
+  color: #ff6666;
 }
 
 #calendar {
-  width: 640px;
+  width: 740px;
   height: 480px;
   margin: 100px auto;
 }
@@ -53,6 +53,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #ff6666;
+}
+
+.Calendar-grid-item.Header{
+  color: #ad93df;
 }
 
 .Calendar-grid-item.nextMonth,
@@ -66,4 +71,8 @@ body {
 
 .Calendar-grid-item:nth-child(-n+7) {
   border-top: 1px solid #ddd;
+}
+
+.CenterAlign{
+  margin: auto;
 }
