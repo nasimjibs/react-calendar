@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import Moment from 'moment';
 import CreateCalendar from './create_calendar';
-import organizeView from './organize_view';
+
 
 class MonthlyView extends Component {
   render(){

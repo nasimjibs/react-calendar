@@ -1,40 +1,32 @@
 import React,{Component} from 'react';
 import Moment from 'moment';
-import MonthlyView from './calendar_view/monthly_view';
-import createCalendar from './create_calendar';
-
-
+import MonthlyView from './monthly_view';
+import DailyView from './daily_view';
+import YearlyView from './yearly_view';
 
 class CalendarView extends Component {
+  
   render() {
-    const currentTime = this.props.now;
-    const startOfMonth = currentTime.startOf('month');
-    let startOfWeek = (startOfMonth.weekday()=== 0)? 0+7 : startOfMonth.weekday();
-    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    const selectedKey = this.props.selectedKey;
+    const now = this.props.now;
 
 
-    return (
-      <div className='Calendar'>
-        <div className='Calendar-header'>
-          <button >&laquo;</button>
-          <div className='Calendar-header-currentDate'>{currentTime.format('MMMM YYYY')}</div>
-          <button >&raquo;</button>
-        </div>
-        <div className='Calendar-grid'>
-          {dayNames.map( (day, index) =>
-            <div
-              className='Calendar-grid-item Header' >
-              {day}
-            </div>
-          )}
-          {createCalendar(currentTime, startOfWeek).map((day, i) =>
-            <div
-              className={`Calendar-grid-item ${day.classNames}`}>
-              {day.day.format('D')}
-            </div>
-          )}
-        </div>
-      </div>
+    let view ='';
+    switch(selectedKey) {
+    case 'month':
+      view = <MonthlyView now={now} />;
+        break;
+    case 'day':
+        view = <DailyView now={now} />;
+        break;
+    case 'year':
+        view = <YearlyView now={now} />;
+        break;
+    }
+
+    return(
+      <div>{view}</div>
     );
   }
 }
